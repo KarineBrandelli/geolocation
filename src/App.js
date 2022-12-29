@@ -18,6 +18,18 @@ function App() {
     height: "100vh",
   });
 
+  useEffect(() => {
+    setViewport({
+      latitude: lat,
+      longitude: lon,
+      zoom: 12,
+      transitionInterpolator: new FlyToInterpolator({ speed: 1.0 }),
+      transitionDuration: "auto",
+      width: "100%",
+      height: "100vh",
+    });
+  }, [lat, lon]);
+
   return (
     <div className="App">
 
