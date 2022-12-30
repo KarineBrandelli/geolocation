@@ -1,11 +1,11 @@
+import React from "react";
+import "./App.css";
+import MapPage from "./pages/MapPage";
 
+export const REACT_APP_GOOGLE_API_KEY = "";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <MapPage />;
 }
 
 export default App;
