@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 import "./MapPage.css";
 
@@ -9,6 +9,11 @@ const MapPage = () => {
     googleMapsApiKey: "AIzaSyDo_RGclqrLYasc0emSCPVquPmrLcUr4gk"
   });
 
+  const position = {
+    lat: -30.039101, 
+    lng: -51.203219
+  }
+
   return (    
     <div className="map">
       {isLoaded ? (
@@ -17,11 +22,17 @@ const MapPage = () => {
             width: '100%',
             height: '100%'
           }}
-          center={{
-            lat: -30.039101, 
-            lng: -51.203219
-          }}
+          center={position}
           zoom={15} >
+          <Marker 
+            position={position}
+            options={{
+              label: {
+                text: 'Posição teste',
+                className: 'map-marker'
+              }
+            }}
+          />
         </GoogleMap>
       ) : ( 
         <></>

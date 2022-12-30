@@ -7,3 +7,10 @@
 .map {
   height: 100vh;
 }
+
+.map-marker {
+  margin-top: -2.5rem;
+  padding: .2rem .5rem;
+  border-radius: .2rem;
+  background-color: rgb(223, 223, 223);
+}
