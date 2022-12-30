@@ -11,7 +11,7 @@ import "./MapPage.css";
 const MapPage = () => {
   const [map, setMap] = useState();
   const [searchBox, setSearchBox] = useState();
-  const [markers, setMarkers] = useState();
+  const [markers, setMarkers] = useState([]);
   console.log(map)
 
   const position = {
@@ -58,7 +58,7 @@ const MapPage = () => {
             onPlacesChanged={ onPlacesChanged } >
             <input
               className="addressField"
-              placeholder="Digite o endereço inicial" />
+              placeholder="Digite o endereço" />
           </StandaloneSearchBox>
 
           {markers.map((marker, index) => (
