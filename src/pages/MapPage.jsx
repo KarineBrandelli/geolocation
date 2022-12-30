@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   GoogleMap,
-  Marker,
+  MarkerF,
   LoadScript,
   StandaloneSearchBox } from "@react-google-maps/api";
 import { REACT_APP_GOOGLE_API_KEY } from "../App";
@@ -12,7 +12,6 @@ const MapPage = () => {
   const [map, setMap] = useState();
   const [searchBox, setSearchBox] = useState();
   const [markers, setMarkers] = useState([]);
-  console.log(map)
 
   const position = {
     lat: -30.039101,
@@ -61,11 +60,7 @@ const MapPage = () => {
               placeholder="Digite o endereço" />
           </StandaloneSearchBox>
 
-          {markers.map((marker, index) => (
-            <Marker
-              key={index}
-              position={marker} />
-          ))};
+          <MarkerF position={position} />
 
         </GoogleMap>
       </LoadScript>
