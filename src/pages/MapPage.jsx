@@ -1,13 +1,41 @@
-import React from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import React, { useState } from "react";
+import {
+  GoogleMap,
+  Marker,
+  LoadScript,
+  StandaloneSearchBox } from "@react-google-maps/api";
 import { REACT_APP_GOOGLE_API_KEY } from "../App";
 
 import "./MapPage.css";
 
 const MapPage = () => {
+  const [map, setMap] = useState();
+  const [searchBox, setSearchBox] = useState();
+  const [markers, setMarkers] = useState();
+  console.log(map)
+
   const position = {
     lat: -30.039101,
     lng: -51.203219,
+  };
+
+  const onMapLoad = (map) => {
+    setMap(map);
+  };
+
+  const onLoad = (ref) => {
+    setSearchBox(ref);
+  };
+
+  const onPlacesChanged = () => {
+    const places = searchBox.getPlaces();
+    const place = places[0];
+    const location = {
+      lat: place?.geometry?.location?.lat() || 0,
+      lng: place?.geometry?.location?.lng() || 0,
+    };
+    setMarkers([...markers, location]);
+    map?.panTo(location);
   };
 
   return (
@@ -17,20 +45,28 @@ const MapPage = () => {
         libraries={["places"]} >
 
         <GoogleMap
+          onLoad={ onMapLoad }
           mapContainerStyle={{
             width: "100%",
             height: "100%",
           }}
           center={position}
           zoom={15} >
-          <Marker
-            position={position}
-            options={{
-              label: {
-                text: "Posição teste",
-                className: "map-marker",
-              },
-            }} />
+
+          <StandaloneSearchBox
+            onLoad={ onLoad }
+            onPlacesChanged={ onPlacesChanged } >
+            <input
+              className="addressField"
+              placeholder="Digite o endereço inicial" />
+          </StandaloneSearchBox>
+
+          {markers.map((marker, index) => (
+            <Marker
+              key={index}
+              position={marker} />
+          ))};
+
         </GoogleMap>
       </LoadScript>
     </div>
