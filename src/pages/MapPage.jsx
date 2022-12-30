@@ -1,43 +1,40 @@
 import React from "react";
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { REACT_APP_GOOGLE_API_KEY } from "../App";
 
 import "./MapPage.css";
 
 const MapPage = () => {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyDo_RGclqrLYasc0emSCPVquPmrLcUr4gk"
-  });
-
   const position = {
-    lat: -30.039101, 
-    lng: -51.203219
-  }
+    lat: -30.039101,
+    lng: -51.203219,
+  };
 
-  return (    
+  return (
     <div className="map">
-      {isLoaded ? (
+      <LoadScript
+        googleMapsApiKey={REACT_APP_GOOGLE_API_KEY}
+        libraries={["places"]} >
+
         <GoogleMap
           mapContainerStyle={{
-            width: '100%',
-            height: '100%'
+            width: "100%",
+            height: "100%",
           }}
           center={position}
           zoom={15} >
-          <Marker 
+          <Marker
             position={position}
             options={{
               label: {
-                text: 'Posição teste',
-                className: 'map-marker'
-              }
-            }}
-          />
+                text: "Posição teste",
+                className: "map-marker",
+              },
+            }} />
         </GoogleMap>
-      ) : ( 
-        <></>
-      )}
+      </LoadScript>
     </div>
-  )};
+  );
+};
 
 export default MapPage;
