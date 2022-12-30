@@ -10,7 +10,7 @@ const MapPage = () => {
   });
 
   return (    
-    <div>
+    <div className="map">
       {isLoaded ? (
         <GoogleMap
           mapContainerStyle={{
