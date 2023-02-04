@@ -1,29 +1,34 @@
-<h1 align="center"> Geolocation App | React </h1>
-
-## Descrição ✏️
-
-<p align="justify">
-
-</p>
-
-<hr>
-
-## Preview 🔎
+<h1 align="center"> Geolocation 📍 </h1>
 
 <p align="center">
-  <img src="./src/assets/" width=32%>
-<p>
+  Uma aplicação web de um mapa com a localização atual desenvolvido com React.js.
+</p>
 
-<hr>
+------
+## Como acessar a página?
 
-## Tecnologias ⚒️
+Você pode acessar a aplicação utilizando um computador, tablet ou celular clicando [nesse]() link.
 
-O projeto foi desenvolvido com as seguintes tecnologias:
+Se você deseja clonar esse repositório em sua máquina, certifique-se que você tem o `nodejs` instalado e em seguida rode o seguinte comando no terminal para a instalação das dependências:
 
-- HTML
-- CSS
-- JavaScript
-- DOM
-- React
+```bash
+npm install
+```
 
-<hr>
+Depois de instalar as dependências, rode o comando:
+```bash
+npm run dev
+```
+
+<p align="center">
+  <img alt="App Layout" src="" width="80%">
+</p>
+
+## Tecnologias utilizadas
+
+Tecnologias utilizadas e suas documentações:
+
+- [Vite](https://vitejs.dev/)
+- [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- [React](https://reactjs.org/)
+- [Google Maps API](https://developers.google.com/maps/documentation/javascript?hl=pt-br)
