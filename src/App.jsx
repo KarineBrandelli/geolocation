@@ -1,10 +1,8 @@
 import React from "react";
-import MapPage from "./page/MapPage";
-
-export const REACT_APP_GOOGLE_API_KEY = "AIzaSyDo_RGclqrLYasc0emSCPVquPmrLcUr4gk";
+import Map from "./components/Map";
 
 function App() {
-  return <MapPage />;
+  return <Map />;
 }
 
 export default App;
