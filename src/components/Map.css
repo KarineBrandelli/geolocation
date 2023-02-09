@@ -58,3 +58,9 @@ button:hover {
   color: white;
   background-color: rgb(62, 151, 224);
 }
+
+@media screen and (max-width: 375px) {
+  .address {
+    width: 15rem;
+  }
+}
