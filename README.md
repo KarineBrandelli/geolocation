@@ -1,7 +1,7 @@
-<h1 align="center"> Geolocation 📍 </h1>
+<h1 align="center"> Maps Direction 📍 </h1>
 
 <p align="center">
-  Uma aplicação web de um mapa com a localização atual desenvolvido com React.js.
+  Uma aplicação web de um mapa com direções desenvolvido com React.js.
 </p>
 
 ------
@@ -14,14 +14,20 @@ Se você deseja clonar esse repositório em sua máquina, certifique-se que voc�
 ```bash
 npm install
 ```
+Para a utilização desta aplicação, é necessário uma chave pessoal de API. A mesma pode ser criada no site da [Google Cloud](https://developers.google.com/maps/documentation/javascript/get-api-key?hl=pt-br). Após a criação da chave, é necessário ativar as seguintes API's:
 
-Depois de instalar as dependências, rode o comando:
+- Maps JavaScript API
+- Directions API
+- Places API
+
+A chave criada deve ser inserida no arquivo `Map.jsx` dentro da constante `key`. Após inserir a chave, rode o comando para iniciar a aplicação:
+
 ```bash
 npm run dev
 ```
 
 <p align="center">
-  <img alt="App Layout" src="" width="80%">
+  <img alt="App Layout" src="https://user-images.githubusercontent.com/108953489/218109718-1d4a68ee-fa5f-46e7-a628-6ac66ead84ca.png" width="80%">
 </p>
 
 ## Tecnologias utilizadas
