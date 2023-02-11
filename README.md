@@ -7,7 +7,7 @@
 ------
 ## Como acessar a página?
 
-Você pode acessar a aplicação utilizando um computador, tablet ou celular clicando [nesse]() link.
+Você pode acessar a aplicação utilizando um computador, tablet ou celular clicando [nesse](https://maps-wine.vercel.app/) link.
 
 Se você deseja clonar esse repositório em sua máquina, certifique-se que você tem o `nodejs` instalado e em seguida rode o seguinte comando no terminal para a instalação das dependências:
 
@@ -19,6 +19,8 @@ Para a utilização desta aplicação, é necessário uma chave pessoal de API. 
 - Maps JavaScript API
 - Directions API
 - Places API
+- Geolocation API
+- Geocoding API
 
 A chave criada deve ser inserida no arquivo `Map.jsx` dentro da constante `key`. Após inserir a chave, rode o comando para iniciar a aplicação:
 
