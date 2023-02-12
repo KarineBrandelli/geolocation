@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import {
   GoogleMap,
   MarkerF,
@@ -10,10 +10,10 @@ import {
 
 import "./Map.css";
 
-const Map = () => {
+export function Map() {
   const key = import.meta.env.VITE_GOOGLE_API_KEY;
 
-  const [map, setMap] = useState('');
+  const [map, setMap] = useState("");
 
   const [searchBoxA, setSearchBoxA] = useState();
   const [searchBoxB, setSearchBoxB] = useState();
@@ -21,10 +21,10 @@ const Map = () => {
   const [pointA, setPointA] = useState();
   const [pointB, setPointB] = useState();
 
-  const [origin, setOrigin] = useState('' || null);
-  const [destination, setDestination] = useState('' || null);
+  const [origin, setOrigin] = useState("" || null);
+  const [destination, setDestination] = useState("" || null);
 
-  const [response, setResponse] = useState('' || null);
+  const [response, setResponse] = useState("" || null);
 
   const [currentLocation, setCurrentLocation] = useState({});
 
@@ -96,13 +96,12 @@ const Map = () => {
     }
   };
 
-  const directionsServiceOptions =
-  useMemo(() => {
-      return {
-        origin,
-        destination,
-        travelMode: "DRIVING",
-      };
+  const directionsServiceOptions = useMemo(() => {
+    return {
+      origin,
+      destination,
+      travelMode: "DRIVING",
+    };
   }, [origin, destination]);
 
   const directionsCallback = useCallback((res) => {
@@ -125,48 +124,47 @@ const Map = () => {
         googleMapsApiKey={key}
         libraries={["places"]} >
 
-        <GoogleMap
-          onLoad={onMapLoad}
-          mapContainerStyle={{ width: "100%", height: "100%" }}
-          center={position}
-          zoom={15} >
+          <GoogleMap
+            onLoad={onMapLoad}
+            mapContainerStyle={{ width: "100%", height: "100%" }}
+            center={currentLocation}
+            zoom={15} >
 
-          <div className="address">
-            <StandaloneSearchBox
-              onLoad={onLoadA}
-              onPlacesChanged={onPlacesChangedA} >
-              <input
-                className="addressField"
-                placeholder="Digite o endereço inicial" />
-            </StandaloneSearchBox>
+            <div className="address">
+              <StandaloneSearchBox
+                onLoad={onLoadA}
+                onPlacesChanged={onPlacesChangedA} >
+                <input
+                  className="addressField"
+                  placeholder="Digite o endereço inicial" />
+              </StandaloneSearchBox>
 
-            <StandaloneSearchBox
-              onLoad={onLoadB}
-              onPlacesChanged={onPlacesChangedB} >
-              <input
-                className="addressField"
-                placeholder="Digite o endereço final" />
-            </StandaloneSearchBox>
+              <StandaloneSearchBox
+                onLoad={onLoadB}
+                onPlacesChanged={onPlacesChangedB} >
+                <input
+                  className="addressField"
+                  placeholder="Digite o endereço final" />
+              </StandaloneSearchBox>
 
-            <button onClick={traceRoute}>Traçar rota</button>
-          </div>
+              <button onClick={traceRoute}>Traçar rota</button>
+            </div>
 
-          {!response && pointA && <MarkerF position={pointA} />}
-          {!response && pointB && <MarkerF position={pointB} />}
+            {!response && pointA && <MarkerF position={pointA} />}
+            {!response && pointB && <MarkerF position={pointB} />}
 
-          {origin && destination && (
-            <DirectionsService
-              options={directionsServiceOptions}
-              callback={directionsCallback} />
-          )}
+            {origin && destination && (
+              <DirectionsService
+                options={directionsServiceOptions}
+                callback={directionsCallback} />
+            )}
 
-          {response && directionsRendererOptions && (
-            <DirectionsRenderer options={directionsRendererOptions} />
-          )}
-        </GoogleMap>
+            {response && directionsRendererOptions && (
+              <DirectionsRenderer options={directionsRendererOptions} />
+            )}
+          </GoogleMap>
+
       </LoadScript>
     </div>
   );
-};
-
-export default Map;
+}
