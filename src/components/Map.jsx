@@ -36,6 +36,15 @@ const Map = () => {
           lng: position.coords.longitude,
         };
 
+        setCurrentLocation(userPosition);
+      },
+      function (error) {
+        console.log("Error Code " + error.code + " - " + error.message);
+      }
+    );
+
+  }, []);
+
   const onMapLoad = (map) => {
     setMap(map);
   };
