@@ -26,10 +26,15 @@ const Map = () => {
 
   const [response, setResponse] = useState('' || null);
 
-  const position = {
-    lat: -27.590824,
-    lng: -48.551262,
-  };
+  const [currentLocation, setCurrentLocation] = useState({});
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        const userPosition = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
 
   const onMapLoad = (map) => {
     setMap(map);
